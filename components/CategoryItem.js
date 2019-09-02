@@ -14,9 +14,7 @@ const ImageBg = props => {
     <ImageBackground
       source={{ uri: `${url}${props.imageName}` }}
       style={props.styleImageBackGround}
-    >
-      <Text style={styles.cateTitle}>{props.title}</Text>
-    </ImageBackground>
+    ></ImageBackground>
   );
 };
 
@@ -30,7 +28,7 @@ export default class CategoryItem extends Component {
     const { item } = this.props;
     let width = Dimensions.get("window").width - 20;
     if (item.type !== "fullPanel") {
-      width = (width / 2) - 5;
+      width = width / 2 - 5;
     }
     let styleImageBackGround = {
       alignSelf: "stretch",
@@ -45,11 +43,22 @@ export default class CategoryItem extends Component {
           imageName={item.imageName}
           title={item.title}
         ></ImageBg>
+        <View style={styles.overlay}>
+          <Text style={styles.cateTitle}>{item.title}</Text>
+        </View>
       </View>
     );
   }
 }
 const styles = StyleSheet.create({
+  overlay: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: "rgba(0,0,0,0.27)"
+  },
   container: {
     marginTop: 10
   },
