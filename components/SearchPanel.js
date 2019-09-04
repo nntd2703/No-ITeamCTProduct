@@ -1,6 +1,29 @@
 import React, { Component } from "react";
-import { View, TextInput, StyleSheet } from "react-native";
+import { View, TextInput, StyleSheet, Text } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import { Feather } from "@expo/vector-icons";
+
+const SearchBar = props => {
+  return (
+    <View style={[props.searchSection, props.customSearchSection]}>
+      <Ionicons
+        name="ios-search"
+        size={25}
+        color="black"
+        style={styles.searchIcon}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Tìm kiếm trên Chợ Tốt"
+        placeholderTextColor="grey"
+        onChangeText={searchString => {
+          props.handleTextChange(searchString);
+        }}
+        underlineColorAndroid="transparent"
+      />
+    </View>
+  );
+};
 
 export default class SearchPanel extends Component {
   constructor(props) {
@@ -9,25 +32,30 @@ export default class SearchPanel extends Component {
   }
 
   render() {
+    const { type } = this.props;
     return (
       <View style={styles.container}>
-        <View style={styles.searchSection}>
-          <Ionicons
-            name="ios-search"
-            size={25}
-            color="black"
-            style={styles.searchIcon}
-          />
-          <TextInput
-            style={styles.input}
-            placeholder="Tìm kiếm trên Chợ Tốt"
-            placeholderTextColor="grey"
-            onChangeText={searchString => {
-              this.setState({ searchString });
-            }}
-            underlineColorAndroid="transparent"
-          />
-        </View>
+        {type === "HomeScreen" ? (
+          <SearchBar searchSection={styles.searchSection} />
+        ) : (
+          <View style={styles.detailContainer}>
+            <Ionicons
+              name="md-arrow-back"
+              size={25}
+              color="black"
+              style={styles.backIcon}
+            />
+            <SearchBar
+              searchSection={[styles.searchSection, styles.customSearchSection]}
+            />
+            <Feather
+              name="bookmark"
+              size={25}
+              color="black"
+              style={styles.markerIcon}
+            />
+          </View>
+        )}
       </View>
     );
   }
@@ -43,7 +71,25 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginHorizontal: 20,
     borderBottomColor: "black",
-    borderBottomWidth: 1,
+    borderBottomWidth: 1
+  },
+  detailContainer: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "center"
+  },
+  backIcon: {
+    flex: 1,
+    marginLeft: 20
+  },
+  markerIcon: {
+    flex: 1,
+    marginRight: -5
+  },
+  customSearchSection: {
+    flex: 8,
+    marginHorizontal: 0,
+    marginRight: 10
   },
   searchIcon: {
     padding: 10

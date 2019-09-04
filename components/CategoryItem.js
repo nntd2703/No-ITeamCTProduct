@@ -7,6 +7,7 @@ import {
   Platform,
   Dimensions
 } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 const url = "https://static.chotot.com.vn/storage/marketplace/home/category/";
 
 const ImageBg = props => {
@@ -25,7 +26,7 @@ export default class CategoryItem extends Component {
   }
 
   render() {
-    const { item } = this.props;
+    const { item, handleOnClickCate } = this.props;
     let width = Dimensions.get("window").width - 20;
     if (item.type !== "fullPanel") {
       width = width / 2 - 5;
@@ -37,7 +38,7 @@ export default class CategoryItem extends Component {
       height: 100
     };
     return (
-      <View style={styles.container}>
+      <TouchableOpacity style={styles.container} onPress={handleOnClickCate}>
         <ImageBg
           styleImageBackGround={styleImageBackGround}
           imageName={item.imageName}
@@ -46,7 +47,7 @@ export default class CategoryItem extends Component {
         <View style={styles.overlay}>
           <Text style={styles.cateTitle}>{item.title}</Text>
         </View>
-      </View>
+      </TouchableOpacity>
     );
   }
 }
