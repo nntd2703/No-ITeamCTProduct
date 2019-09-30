@@ -3,13 +3,17 @@ export const listFullPanel = [
     id: 1000,
     imageName: "cho-tot-nha.png",
     title: "Bất Động Sản",
-    type: "fullPanel"
+    type: "fullPanel",
+    newImageLink: "1000.png",
+    backgroundColor: "#61C2FF"
   },
   {
     id: 2000,
     imageName: "cho-tot-xe.png",
     title: "Xe cộ",
-    type: "fullPanel"
+    type: "fullPanel",
+    newImageLink: "2000.png",
+    backgroundColor: "#FF6F1F"
   }
 ];
 
@@ -18,62 +22,81 @@ export const listCate = [
     id: 5000,
     imageName: "do-dien-tu.png",
     title: "Đồ điện tử",
-    newImageLink: "https://s3-alpha-sig.figma.com/img/55de/ca9d/6109c9a70f7568411e2c50a89510af09?Expires=1571011200&Signature=hktapVc7p4oThaN7rMFp1b0LgU1cZEMGB69ZVp5x3o5pHE3~6UxFQ20SVR0C3j3b6QJV8m9mfw7dm7jTo-VUr3qDmllc9Cp-vY8bJCfPzYT4LUVOWZCcH2o4fOM1qsId1f5o-GSKfKzyWlQUbq3Uy8RWL7al5xeH11YIkS1-r5CkDEKmFuL5NC~0jTOiHR9g8wtdd410QAQHhPLgtlFK~OAfxv3YwoMnYRcNY~RUq350W14euXTpSxGYd6KQ9B3yKa67BMfiTPN9oPgpqsT4UutQHj-03ajnMaVHYNNpokFc8R4Ok1PBh9B-5eD4j~6JNDS3CTvG6Bn6bin2UFmMgw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
+    newImageLink: "5000.png",
+    backgroundColor: "#4CD964"
   },
   {
     id: 13000,
     imageName: "viec-lam.png",
-    title: "Việc làm"
+    title: "Việc làm",
+    newImageLink: "13000.png",
+    backgroundColor: "#FCC21B"
   },
   {
     id: 12000,
     imageName: "thu-cung.png",
-    title: "Thú Cưng"
+    title: "Thú Cưng",
+    newImageLink: "12000.png",
+    backgroundColor: "#FF717F"
   },
   {
     id: 9000,
     imageName: "noi-ngoai-that.png",
-    title: "Nội ngoại thất, Đồ gia dụng"
+    title: "Nội ngoại thất",
+    newImageLink: "9000.png",
+    backgroundColor: "#FF9800"
   },
   {
     id: 11000,
     imageName: "me-va-be.png",
     title: "Mẹ và bé",
+    newImageLink: "11000.png",
+    backgroundColor: "#F975CC"
   },
   {
     id: 4000,
     imageName: "giai-tri-the-thao-so-thich.png",
-    title: "Giải trí, Thể thao, Sở thích"
+    title: "Giải trí, Thể thao, Sở thích",
+    newImageLink: "4000.png",
+    backgroundColor: "#E0A372"
   },
   {
     id: 3000,
     imageName: "thoi-trang-do-dung-ca-nhan.png",
-    title: "Thời trang, đồ dùng cá nhân"
+    title: "Thời trang",
+    newImageLink: "3000.png",
+    backgroundColor: "#FF2D55"
   },
   {
     id: 8000,
     imageName: "do-van-phong.png",
-    title: "Đồ văn phòng, Công nông nghiệp"
+    title: "Đồ dùng văn phòng",
+    newImageLink: "8000.png",
+    backgroundColor: "#61C2FF"
   },
   {
     id: 6000,
     imageName: "dich-vu-du-lich.png",
-    title: "Dịch vụ, Du lịch"
+    title: "Dịch vụ, Du lịch",
+    newImageLink: "6000.png",
+    backgroundColor: "#FED0AC"
   },
   {
     id: 7000,
     imageName: "cac-loai-khac.png",
-    title: "Các loại khác"
+    title: "Các loại khác",
+    newImageLink: "7000.png",
+    backgroundColor: "#57DB41"
   },
   {
     id: 13,
     imageName: "cho-tang-mien-phi.png",
-    title: "Cho tặng miễn phí"
+    title: "Cho tặng miễn phí",
   },
   {
     id: 14,
     imageName: "tat-ca-danh-muc.png",
-    title: "Tất cả danh mục"
+    title: "Tất cả danh mục",
   }
 ];
 
