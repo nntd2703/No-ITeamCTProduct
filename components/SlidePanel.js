@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Text, View, Image, Dimensions } from "react-native";
 import Swiper from "react-native-swiper";
+import { loadingIcon } from "../constants/UrlGetData";
 const { width } = Dimensions.get("window");
 
 const url =
@@ -19,7 +20,7 @@ const styles = {
     width,
     flex: 1,
     backgroundColor: "transparent",
-    alignSelf: 'stretch', 
+    alignSelf: "stretch"
   },
 
   loadingView: {
@@ -52,8 +53,7 @@ const Slide = props => {
           <Image
             style={styles.loadingImage}
             source={{
-              uri:
-                "https://raw.githubusercontent.com/leecade/react-native-swiper/master/examples/components/LoadMinimal/img/loading.gif"
+              uri: loadingIcon
             }}
           />
         </View>

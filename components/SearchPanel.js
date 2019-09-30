@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { View, TextInput, StyleSheet, Text } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
-import { Feather } from "@expo/vector-icons";
+import { Ionicons, Feather } from "@expo/vector-icons";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 const SearchBar = props => {
   return (
@@ -9,13 +9,13 @@ const SearchBar = props => {
       <Ionicons
         name="ios-search"
         size={25}
-        color="black"
+        color="white"
         style={styles.searchIcon}
       />
       <TextInput
         style={styles.input}
         placeholder="Tìm kiếm trên Chợ Tốt"
-        placeholderTextColor="grey"
+        placeholderTextColor="white"
         onChangeText={searchString => {
           props.handleTextChange(searchString);
         }}
@@ -39,19 +39,25 @@ export default class SearchPanel extends Component {
           <SearchBar searchSection={styles.searchSection} />
         ) : (
           <View style={styles.detailContainer}>
-            <Ionicons
-              name="md-arrow-back"
-              size={25}
-              color="black"
+            <TouchableOpacity
               style={styles.backIcon}
-            />
+              onPress={() => {
+                this.props.goBack();
+              }}
+            >
+              <Ionicons
+                name="ios-arrow-round-back"
+                size={35}
+                color="white"
+              />
+            </TouchableOpacity>
             <SearchBar
               searchSection={[styles.searchSection, styles.customSearchSection]}
             />
             <Feather
               name="bookmark"
               size={25}
-              color="black"
+              color="white"
               style={styles.markerIcon}
             />
           </View>
@@ -70,7 +76,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     marginHorizontal: 20,
-    borderBottomColor: "black",
+    borderBottomColor: "white",
     borderBottomWidth: 1
   },
   detailContainer: {
@@ -79,15 +85,18 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   backIcon: {
-    flex: 1,
-    marginLeft: 20
+    flex: 4,
+    justifyContent: "center",
+    alignItems: "center",
+    width: 40
   },
   markerIcon: {
-    flex: 1,
-    marginRight: -5
+    flex: 0.75,
+    justifyContent: "center",
+    alignItems: "center"
   },
   customSearchSection: {
-    flex: 8,
+    flex: 7,
     marginHorizontal: 0,
     marginRight: 10
   },

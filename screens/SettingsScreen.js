@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
+import ListCategory from '../components/ListCategory';
 
 export default class SettingsScreen extends Component {
   constructor(props) {
@@ -11,7 +12,8 @@ export default class SettingsScreen extends Component {
   render() {
     return (
       <View>
-        <Text> SettingsScreen </Text>
+        <Text> Test Screen </Text>
+        <ListCategory/>
       </View>
     );
   }

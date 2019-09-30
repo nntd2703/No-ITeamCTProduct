@@ -13,6 +13,7 @@ import CategoryItem from "../components/CategoryItem";
 import { fetchDataAPI } from "../utils/GetAPIFunction";
 import { listCate, listFullPanel } from "../constants/ListCategory.js";
 import { getPanelHomeScreen } from "../constants/UrlGetData";
+import Constants from "expo-constants";
 
 export default class HomeScreen extends Component {
   constructor(props) {
@@ -41,7 +42,10 @@ export default class HomeScreen extends Component {
     const { listSlidePanel } = this.state;
     return (
       <View style={styles.container}>
-        <SearchPanel style={styles.searchPanel} type="HomeScreen" />
+        <SearchPanel
+          style={styles.searchPanel}
+          type="HomeScreen"
+        />
         <ScrollView style={styles.scrollView}>
           <SlidePanel style={styles.slidePanel} data={listSlidePanel} />
           <View style={styles.categoryPanel}>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Platform, View, Text } from "react-native";
+import { Platform } from "react-native";
 import { createStackNavigator } from "react-navigation-stack";
 import { createBottomTabNavigator } from "react-navigation-tabs";
 import MessageScreen from "../screens/MessageScreen";
@@ -7,10 +7,21 @@ import HomeScreen from "../screens/HomeScreen";
 import SettingsScreen from "../screens/SettingsScreen";
 import TabBarIcon from "../components/TabBarIcon";
 import CategoryDetailScreen from "../screens/CategoryDetailScreen";
+import DetailsProductScreen from "../screens/DetailsProductScreen";
 
 const config = {
   headerMode: "none"
 };
+
+const DetailsProductScreenStack = createStackNavigator(
+  {
+    DetailsProduct: DetailsProductScreen
+  },
+  {
+    headerMode: "none",
+    tabBarVisible: false
+  }
+);
 
 const CateDetailScreenStack = createStackNavigator(
   {
@@ -22,7 +33,8 @@ const CateDetailScreenStack = createStackNavigator(
 const HomeStack = createStackNavigator(
   {
     Home: HomeScreen,
-    CateDetailScreenStack
+    CateDetailScreenStack,
+    DetailsProductScreenStack
   },
   config
 );
@@ -35,6 +47,20 @@ HomeStack.navigationOptions = {
       name={Platform.OS === "ios" ? "ios-list" : "md-link"}
     />
   )
+};
+
+HomeStack.navigationOptions = ({ navigation }) => {
+  let tabBarVisible = true;
+
+  let routeName = navigation.state.routes[navigation.state.index].routeName;
+  console.log(routeName)
+  if (routeName == "DetailsProductScreenStack") {
+    tabBarVisible = false;
+  }
+
+  return {
+    tabBarVisible
+  };
 };
 
 const CompleteStack = createStackNavigator({
@@ -58,7 +84,7 @@ const ActiveStack = createStackNavigator({
 });
 
 ActiveStack.navigationOptions = {
-  tabBarLabel: "Active",
+  tabBarLabel: "Test Screen",
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
@@ -73,10 +99,11 @@ const MainTabNavigator = createBottomTabNavigator(
   {
     Home: HomeStack,
     Active: ActiveStack,
-    Complete: CompleteStack
+    Complete: CompleteStack,
+    Details: DetailsProductScreenStack
   },
   {
-    initialRouteName: "Home"
+    initialRouteName: "Active"
   }
 );
 

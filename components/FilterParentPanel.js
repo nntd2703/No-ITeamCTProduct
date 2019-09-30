@@ -1,6 +1,6 @@
 import React from "react";
 import { View, StyleSheet, Text } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
+import { AntDesign } from "@expo/vector-icons";
 import { DefaultListFilter } from "../constants/DefaultListFilter";
 
 export default class FilterParentPanel extends React.Component {
@@ -15,36 +15,36 @@ export default class FilterParentPanel extends React.Component {
     return (
       <View style={styles.filterPanel}>
         <View style={styles.location}>
-          <View style={[styles.filterSection, { margin: 10 }]}>
-            <Text style={{ fontSize: 15, flex: 1, paddingLeft: 10 }}>
+          <View style={[styles.filterSection, { margin: 0 }]}>
+            <Text style={{ fontSize: 15, flex: 1, paddingLeft: 0 }}>
               {DefaultListFilter[0].title}
             </Text>
-            <Ionicons name="md-arrow-dropdown" size={25} color="black" />
+            <AntDesign name="caretdown" size={15} color="black" />
           </View>
         </View>
         <View style={styles.category}>
           <View style={[styles.filterSection, styles.specialFilter]}>
-            <Text style={{ fontSize: 15, flex: 1, paddingLeft: 10 }}>
+            <Text style={{ fontSize: 15, flex: 1, paddingLeft: 0 }}>
               {DefaultListFilter[1].title}
             </Text>
-            <Ionicons
-              name="md-arrow-dropdown"
-              size={25}
+            <AntDesign
+              name="caretdown"
+              size={15}
               color="black"
-              style={{ marginRight: 20 }}
+              style={{ marginRight: 0 }}
             />
           </View>
         </View>
         <View style={styles.filter}>
-          <View style={[styles.filterSection, { margin: 10 }]}>
+          <View style={[styles.filterSection, { margin: 0 }]}>
             <Text style={{ fontSize: 15, flex: 1 }}>
               {DefaultListFilter[2].title}
             </Text>
-            <Ionicons
-              name="md-arrow-dropdown"
-              size={25}
+            <AntDesign
+              name="caretdown"
+              size={15}
               color="black"
-              style={{ paddingLeft: 20 }}
+              style={{ paddingLeft: 0 }}
             />
           </View>
         </View>
@@ -59,7 +59,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     borderBottomColor: "grey",
-    borderBottomWidth: 1
+    borderBottomWidth: 1,
+    marginHorizontal: 5
   },
   location: {
     flex: 4
