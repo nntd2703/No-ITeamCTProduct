@@ -51,7 +51,6 @@ export default class ItemDetails extends Component {
                 {data.subject}
               </Text>
               <View style={styles.moreDetails}>
-                <SvgUri width="10%" height="60%" uri={adProIcon} />
                 <View style={styles.timeComponent}>
                   <Text style={styles.time}>{data.date}</Text>
                 </View>
@@ -121,10 +120,11 @@ const styles = StyleSheet.create({
     marginVertical: 10
   },
   timeComponent: {
-    marginHorizontal: 5,
-    borderLeftColor: "grey",
-    borderLeftWidth: 0.5,
+    //marginHorizontal: 5,
+    //borderLeftColor: "grey",
+    //borderLeftWidth: 0.5,
     borderRightColor: "grey",
+    marginRight: 5,
     borderRightWidth: 0.5,
     height: 20
   },

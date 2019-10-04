@@ -14,7 +14,7 @@ import Carousel, { ParallaxImage } from "react-native-snap-carousel";
 import Constants from "expo-constants";
 import { MaterialIcons } from "@expo/vector-icons";
 import SuggestProductPanel from "../components/SuggestProductPanel";
-import { getDetailProductUrl } from "../utils/FullApi";
+import { getDetailProductUrl, getSimilarProductUrl } from "../utils/FullApi";
 import { parsingNumberToDateTime } from "../utils/FunctionUtils";
 import Footer from "../components/Footer";
 import ViewMore from "../components/ViewMore";
@@ -28,12 +28,21 @@ export default class DetailsProductScreen extends Component {
     super(props);
     this.state = {
       itemId: this.props.navigation.state.params
-         ? this.props.navigation.state.params.itemId
+        ? this.props.navigation.state.params.itemId
         : "36617361",
       //itemId: "36617361",
-      data: {}
+      data: {},
+      suggestData: []
     };
   }
+
+  fetchSuggestData = ad_id => {
+    return fetch(`${getSimilarProductUrl}${ad_id}`)
+      .then(response => response.json())
+      .catch(error => {
+        console.error(error);
+      });
+  };
 
   fetchData() {
     return fetch(`${getDetailProductUrl}${this.state.itemId}`)
@@ -46,7 +55,14 @@ export default class DetailsProductScreen extends Component {
   componentDidMount() {
     this.fetchData().then(data => {
       this.setState({ data }, () => {
-        this.setState({ loading: false });
+        console.log(data.ad.ad_id);
+
+        console.log(`${getSimilarProductUrl}${data.ad.ad_id}`);
+        this.fetchSuggestData(data.ad.ad_id).then(suggestData => {
+          this.setState({ suggestData: suggestData }, () => {
+            this.setState({ loading: false });
+          });
+        });
       });
     });
   }
@@ -88,7 +104,8 @@ export default class DetailsProductScreen extends Component {
   };
 
   render() {
-    const { data } = this.state;
+    const { data, itemId, suggestData } = this.state;
+    //console.log(suggestData)
     const productDetails = data.ad;
     const layoutDetails = productDetails ? (
       <ScrollView
@@ -263,7 +280,18 @@ export default class DetailsProductScreen extends Component {
             </View>
           </View>
         </View>
-        <SuggestProductPanel />
+        {suggestData && (
+          <SuggestProductPanel
+            isCompareIcon={true}
+            listSuggestProduct={suggestData}
+            suggestProductClick={(list_id) => () => {
+              this.props.navigation.navigate("CompareTool", {
+                value1: itemId,
+                value2: list_id ? list_id : 63642525
+              });
+            }}
+          />
+        )}
       </ScrollView>
     ) : (
       <View style={styles.loading}>

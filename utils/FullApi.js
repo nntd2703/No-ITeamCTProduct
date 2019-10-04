@@ -3,4 +3,6 @@ const getListProductUrl =
 
 const getDetailProductUrl = "https://gateway.chotot.com/v1/public/ad-listing/";
 
-export { getListProductUrl, getDetailProductUrl};
+const getSimilarProductUrl = "https://gateway.chotot.com/v1/public/suggestion/similar-ads?ad_id="
+
+export { getListProductUrl, getDetailProductUrl, getSimilarProductUrl};

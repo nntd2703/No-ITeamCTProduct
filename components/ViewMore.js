@@ -20,7 +20,6 @@ export default class ViewMore extends React.Component {
     );
   }
   renderViewLess(onPress) {
-    console.log(onPress)
     return (
       <View style={styles.container}>
         <TouchableOpacity onPress={onPress} style={styles.viewMoreButton}>
@@ -43,7 +42,6 @@ export default class ViewMore extends React.Component {
             textAlign: "justify",
             lineHeight: 22
           }}
-          onPress={() => console.log("aaa")}
         >
           {this.props.content}
         </Text>

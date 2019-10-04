@@ -8,7 +8,10 @@ import SettingsScreen from "../screens/SettingsScreen";
 import TabBarIcon from "../components/TabBarIcon";
 import CategoryDetailScreen from "../screens/CategoryDetailScreen";
 import DetailsProductScreen from "../screens/DetailsProductScreen";
+import ChooseCateNewScreen from "../screens/ChooseCateNewScreen";
+import CompareScreen from "../screens/CompareScreen";
 
+const isNewUser = true;
 const config = {
   headerMode: "none"
 };
@@ -23,6 +26,30 @@ const DetailsProductScreenStack = createStackNavigator(
   }
 );
 
+const ChooseCateScreenStack = createStackNavigator(
+  {
+    ChooseCategory: ChooseCateNewScreen
+  },
+  {
+    headerMode: "none",
+    tabBarVisible: false
+  }
+);
+
+ChooseCateScreenStack.navigationOptions = ({ navigation }) => {
+  let tabBarVisible = false;
+  return {
+    tabBarVisible
+  };
+};
+
+const CompareToolStack = createStackNavigator(
+  {
+    CompareTool: CompareScreen
+  },
+  config
+);
+
 const CateDetailScreenStack = createStackNavigator(
   {
     CategoryDetail: CategoryDetailScreen
@@ -34,7 +61,8 @@ const HomeStack = createStackNavigator(
   {
     Home: HomeScreen,
     CateDetailScreenStack,
-    DetailsProductScreenStack
+    DetailsProductScreenStack,
+    CompareToolStack
   },
   config
 );
@@ -53,8 +81,10 @@ HomeStack.navigationOptions = ({ navigation }) => {
   let tabBarVisible = true;
 
   let routeName = navigation.state.routes[navigation.state.index].routeName;
-  console.log(routeName)
-  if (routeName == "DetailsProductScreenStack") {
+  if (
+    routeName == "DetailsProductScreenStack" ||
+    routeName == "CompareToolStack"
+  ) {
     tabBarVisible = false;
   }
 
@@ -79,9 +109,12 @@ CompleteStack.navigationOptions = {
 
 CompleteStack.path = "";
 
-const ActiveStack = createStackNavigator({
-  Active: SettingsScreen
-});
+const ActiveStack = createStackNavigator(
+  {
+    Active: SettingsScreen
+  },
+  config
+);
 
 ActiveStack.navigationOptions = {
   tabBarLabel: "Test Screen",
@@ -95,16 +128,18 @@ ActiveStack.navigationOptions = {
 
 ActiveStack.path = "";
 
-const MainTabNavigator = createBottomTabNavigator(
+const MainTabNavigator = createStackNavigator(
   {
     Home: HomeStack,
     Active: ActiveStack,
     Complete: CompleteStack,
-    Details: DetailsProductScreenStack
+    Details: DetailsProductScreenStack,
+    ChooseCate: ChooseCateScreenStack
   },
+  config,
   {
-    initialRouteName: "Active"
-  }
+    initialRouteName: "ChooseCate"
+  },
 );
 
 export default MainTabNavigator;

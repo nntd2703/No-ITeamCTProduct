@@ -5,7 +5,8 @@ import {
   Platform,
   ScrollView,
   FlatList,
-  Dimensions
+  Text,
+  TouchableOpacity
 } from "react-native";
 import SlidePanel from "../components/SlidePanel";
 import SearchPanel from "../components/SearchPanel";
@@ -14,6 +15,8 @@ import { fetchDataAPI } from "../utils/GetAPIFunction";
 import { listCate, listFullPanel } from "../constants/ListCategory.js";
 import { getPanelHomeScreen } from "../constants/UrlGetData";
 import Constants from "expo-constants";
+import ListCategoryComponent from "../components/ListCategoryComponent";
+import SuggestProductPanel from "../components/SuggestProductPanel";
 
 export default class HomeScreen extends Component {
   constructor(props) {
@@ -32,7 +35,7 @@ export default class HomeScreen extends Component {
     });
   }
 
-  handleOnClickCate = item => () => {
+  handleOnClick = item => {
     this.props.navigation.navigate("CategoryDetail", {
       categoryChose: item
     });
@@ -40,36 +43,62 @@ export default class HomeScreen extends Component {
 
   render() {
     const { listSlidePanel } = this.state;
+    const showOldVersion = false;
     return (
       <View style={styles.container}>
-        <SearchPanel
-          style={styles.searchPanel}
-          type="HomeScreen"
-        />
-        <ScrollView style={styles.scrollView}>
+        <SearchPanel style={styles.searchPanel} type="HomeScreen" />
+        <ScrollView
+          style={styles.scrollView}
+          showsVerticalScrollIndicator={false}
+        >
           <SlidePanel style={styles.slidePanel} data={listSlidePanel} />
-          <View style={styles.categoryPanel}>
-            {listFullPanel.map(item => (
-              <CategoryItem
-                handleOnClickCate={this.handleOnClickCate(item)}
-                key={item.id}
-                item={item}
-              />
-            ))}
-            <FlatList
-              data={this.state.categoryList}
-              showsVerticalScrollIndicator={false}
-              numColumns={2}
-              columnWrapperStyle={{ justifyContent: "space-between" }}
-              renderItem={({ item }) => (
-                <CategoryItem
-                  handleOnClickCate={this.handleOnClickCate(item)}
-                  key={item.id}
-                  item={item}
+          <View>
+            {showOldVersion ? (
+              <View>
+                <View style={styles.categoryPanel}>
+                  {listFullPanel.map(item => (
+                    <CategoryItem
+                      handleOnClickCate={this.handleOnClick(item)}
+                      key={item.id}
+                      item={item}
+                    />
+                  ))}
+                  <FlatList
+                    data={this.state.categoryList}
+                    showsVerticalScrollIndicator={false}
+                    numColumns={2}
+                    columnWrapperStyle={{ justifyContent: "space-between" }}
+                    renderItem={({ item }) => (
+                      <CategoryItem
+                        handleOnClickCate={this.handleOnClickCate(item)}
+                        key={item.id}
+                        item={item}
+                      />
+                    )}
+                    keyExtractor={item => item.id}
+                  />
+                </View>
+              </View>
+            ) : (
+              <View>
+                <ListCategoryComponent
+                  handleOnClickCate={(item) => {
+                    this.handleOnClick(item);
+                  }}
                 />
-              )}
-              keyExtractor={item => item.id}
-            />
+              </View>
+            )}
+            <View style={{ marginTop: 10, marginHorizontal: 10 }}>
+              <SuggestProductPanel
+                isCompareIcon={false}
+                header="Các sản phẩm bạn đã xem"
+                type="home"
+                headerFontSize={15}
+              />
+            </View>
+            <View style={{ margin: 10 }}>
+              <Text>Dành cho bạn</Text>
+            </View>
           </View>
         </ScrollView>
       </View>

@@ -1,19 +1,17 @@
-import React, { Component } from 'react';
-import { View, Text } from 'react-native';
-import ListCategory from '../components/ListCategory';
+import React from "react";
+import { View, Text } from "react-native";
+import CompareTool from "../components/CompareTool";
 
-export default class SettingsScreen extends Component {
+export default class SettingsScreen extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-    };
+    this.state = {};
   }
 
   render() {
     return (
       <View>
-        <Text> Test Screen </Text>
-        <ListCategory/>
+        <CompareTool />
       </View>
     );
   }

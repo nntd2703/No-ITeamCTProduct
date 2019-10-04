@@ -28,7 +28,6 @@ export default class CategoryDetailScreen extends React.Component {
   }
 
   fetchData(id) {
-    console.log(getListProductUrl.replace("categoryId", id));
     return fetch(getListProductUrl.replace("categoryId", id))
       .then(response => response.json())
       .catch(error => {
@@ -48,7 +47,6 @@ export default class CategoryDetailScreen extends React.Component {
     this.fetchData(this.state.itemDefault.id).then(data => {
       this.setState({ data: data }, () => {
         this.setState({ loading: false });
-        console.log(this.state);
       });
     });
   }
