@@ -19,6 +19,7 @@ export default class CategoryDetailScreen extends React.Component {
   constructor(props) {
     super(props);
 
+    this.onEndReachedCalledDuringMomentum = true;
     this.state = {
       itemDefault: this.props.navigation.state.params.categoryChose,
       loading: "true",
@@ -46,6 +47,7 @@ export default class CategoryDetailScreen extends React.Component {
   componentDidMount() {
     this.fetchData(this.state.itemDefault.id).then(data => {
       this.setState({ data: data }, () => {
+        console.log(data.ads.length)
         this.setState({ loading: false });
       });
     });

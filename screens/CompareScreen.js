@@ -22,7 +22,7 @@ export default class CompareScreen extends React.Component {
     return (
       <View style={{ flex: 1 }}>
         <View style={{ flex: 1 }}>
-          <HeaderComponent handleGoBack={this.goBackAction} />
+          <HeaderComponent handleGoBack={this.goBackAction} headerText="So Sánh" />
         </View>
         <View style={{ flex: 9}}>
           <CompareTool idItem1={item1} idItem2={item2} />

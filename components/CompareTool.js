@@ -25,6 +25,12 @@ export default class CompareTool extends React.Component {
     const data = [];
     Object.keys(data1.ad_params).forEach(function(key, index) {
       if (key !== "ward" && key !== "area") {
+        const value1 = data1.ad_params[key].value
+          ? data1.ad_params[key].value
+          : "NaN";
+        const value2 = data2.ad_params[key].value
+          ? data2.ad_params[key].value
+          : "NaN";
         data.push({
           id: `${index}${index + 1}`,
           header: key === "region" ? "Khu vực" : data1.ad_params[key].label
@@ -34,15 +40,11 @@ export default class CompareTool extends React.Component {
           value1:
             key === "region"
               ? `${data1.ad_params.area.value} ${data1.ad_params.region.value}`
-              : data1.ad_params[key].value
-              ? data1.ad_params[key].value
-              : "NaN",
+              : value1,
           value2:
             key === "region"
               ? `${data2.ad_params.area.value} ${data2.ad_params.region.value}`
-              : data2.ad_params[key].value
-              ? data2.ad_params[key].value
-              : "NaN"
+              : value2
         });
       }
     });
