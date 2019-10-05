@@ -23,54 +23,58 @@ export default class CompareTool extends React.Component {
 
   mappingPropertyData = (data1, data2) => {
     const data = [];
-    Object.keys(data1.ad_params).forEach(function(key, index) {
-      if (key !== "ward" && key !== "area") {
-        const value1 = data1.ad_params[key].value
-          ? data1.ad_params[key].value
-          : "NaN";
-        const value2 = data2.ad_params[key].value
-          ? data2.ad_params[key].value
-          : "NaN";
-        data.push({
-          id: `${index}${index + 1}`,
-          header: key === "region" ? "Khu vực" : data1.ad_params[key].label
-        });
-        data.push({
-          id: `${index}`,
-          value1:
-            key === "region"
-              ? `${data1.ad_params.area.value} ${data1.ad_params.region.value}`
-              : value1,
-          value2:
-            key === "region"
-              ? `${data2.ad_params.area.value} ${data2.ad_params.region.value}`
-              : value2
-        });
-      }
-    });
-    const fData = data1.ad;
-    const sData = data2.ad;
-    const fValue = {};
-    const sValue = {};
-    this.setState({
-      data: data,
-      headerData: [
-        {
-          id: fData.list_id,
-          image: fData.images[0],
-          subject: fData.subject,
-          price_string: fData.price_string,
-          location: `${fData.area_name}, ${fData.region_name}`
-        },
-        {
-          id: sData.list_id,
-          image: sData.images[0],
-          subject: sData.subject,
-          price_string: sData.price_string,
-          location: `${sData.area_name}, ${sData.region_name}`
+    try {
+      Object.keys(data1.ad_params).forEach(function(key, index) {
+        if (key !== "ward" && key !== "area") {
+          const value1 = data1.ad_params[key].value
+            ? data1.ad_params[key].value
+            : "NaN";
+          const value2 = data2.ad_params[key].value
+            ? data2.ad_params[key].value
+            : "NaN";
+          data.push({
+            id: `${index}${index + 1}`,
+            header: key === "region" ? "Khu vực" : data1.ad_params[key].label
+          });
+          data.push({
+            id: `${index}`,
+            value1:
+              key === "region"
+                ? `${data1.ad_params.area.value} ${data1.ad_params.region.value}`
+                : value1,
+            value2:
+              key === "region"
+                ? `${data2.ad_params.area.value} ${data2.ad_params.region.value}`
+                : value2
+          });
         }
-      ]
-    });
+      });
+      const fData = data1.ad;
+      const sData = data2.ad;
+      const fValue = {};
+      const sValue = {};
+      this.setState({
+        data: data,
+        headerData: [
+          {
+            id: fData.list_id,
+            image: fData.images[0],
+            subject: fData.subject,
+            price_string: fData.price_string,
+            location: `${fData.area_name}, ${fData.region_name}`
+          },
+          {
+            id: sData.list_id,
+            image: sData.images[0],
+            subject: sData.subject,
+            price_string: sData.price_string,
+            location: `${sData.area_name}, ${sData.region_name}`
+          }
+        ]
+      });
+    } catch (e) {
+      console.log(e)
+    }
   };
 
   async componentDidMount() {

@@ -16,6 +16,10 @@ export default class ItemDetails extends Component {
   render() {
     const { data, handleViewProductDetails } = this.props;
     const { loadedImage } = this.state;
+    const random = data.images && data.images.length
+      ? Math.floor(Math.random() * Math.floor(data.images.length))
+      : 0;
+
     if (data) {
       return (
         <View style={styles.container}>
@@ -37,7 +41,7 @@ export default class ItemDetails extends Component {
                 }}
                 style={styles.loadingImage}
                 source={{
-                  uri: data.image
+                  uri: data.image ? data.image : data.images[random]
                 }}
               />
               {!loadedImage && (

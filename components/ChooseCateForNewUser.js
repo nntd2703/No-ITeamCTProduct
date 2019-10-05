@@ -11,6 +11,7 @@ import {
 } from "react-native";
 import { listCate, listFullPanel } from "../constants/ListCategory";
 import { MaterialIcons, Ionicons } from "@expo/vector-icons";
+import Constants from "expo-constants"
 
 export default class ChooseCateForNewUser extends React.Component {
   constructor(props) {
@@ -183,7 +184,8 @@ const styles = StyleSheet.create({
   headerImage: {
     width: 183,
     height: 68,
-    marginVertical: 20
+    marginVertical: 20,
+    marginTop: Constants.isDevice ? 20 : 35
   },
   cateButton: {
     backgroundColor: "#4CD964",

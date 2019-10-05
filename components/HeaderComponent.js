@@ -7,6 +7,7 @@ import {
   TouchableOpacity
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import Constants from "expo-constants";
 
 export default class HeaderComponent extends React.Component {
   constructor(props) {
@@ -16,7 +17,7 @@ export default class HeaderComponent extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <View style={[styles.container, { marginTop: Constants.isDevice ? 20 : 30}]}>
         <View style={styles.containerComponent}>
           <View style={styles.leftContent}>
             <TouchableOpacity onPress={this.props.handleGoBack}>
@@ -66,7 +67,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     marginTop: Platform.OS === "ios" ? 20 : Constants.statusBarHeight,
-    backgroundColor: "#F6BA33"
+    backgroundColor: "#F6BA33",
   },
   containerComponent: {
     justifyContent: "space-between",

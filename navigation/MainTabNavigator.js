@@ -130,16 +130,14 @@ ActiveStack.path = "";
 
 const MainTabNavigator = createStackNavigator(
   {
+    //Active: ActiveStack,
     Home: HomeStack,
-    Active: ActiveStack,
-    Complete: CompleteStack,
-    Details: DetailsProductScreenStack,
     ChooseCate: ChooseCateScreenStack
   },
   config,
   {
-    initialRouteName: "ChooseCate"
-  },
+    initialRouteName: "Home"
+  }
 );
 
 export default MainTabNavigator;

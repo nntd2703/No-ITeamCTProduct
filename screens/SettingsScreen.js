@@ -1,6 +1,5 @@
 import React from "react";
 import { View, Text } from "react-native";
-import CompareTool from "../components/CompareTool";
 
 export default class SettingsScreen extends React.Component {
   constructor(props) {
@@ -11,7 +10,6 @@ export default class SettingsScreen extends React.Component {
   render() {
     return (
       <View>
-        <CompareTool />
       </View>
     );
   }

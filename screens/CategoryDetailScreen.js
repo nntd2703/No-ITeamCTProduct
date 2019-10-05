@@ -14,6 +14,7 @@ import ItemDetails from "../components/ItemDetails";
 import Constants from "expo-constants";
 import { getListProductUrl } from "../utils/FullApi";
 import ChangeSortButton from "../components/ChangeSortButton";
+import SearchLayout from "../components/SearchLayout";
 
 export default class CategoryDetailScreen extends React.Component {
   constructor(props) {
@@ -24,7 +25,8 @@ export default class CategoryDetailScreen extends React.Component {
       itemDefault: this.props.navigation.state.params.categoryChose,
       loading: "true",
       itemCg: "",
-      data: []
+      data: [],
+      searchPanel: false
     };
   }
 
@@ -47,7 +49,7 @@ export default class CategoryDetailScreen extends React.Component {
   componentDidMount() {
     this.fetchData(this.state.itemDefault.id).then(data => {
       this.setState({ data: data }, () => {
-        console.log(data.ads.length)
+        console.log(data.ads.length);
         this.setState({ loading: false });
       });
     });
@@ -70,20 +72,47 @@ export default class CategoryDetailScreen extends React.Component {
     );
   };
 
+  handleSearchClick = () => () => {
+    this.setState({ searchPanel: true });
+  };
+
   render() {
-    const { data, loading } = this.state;
+    const { data, loading, searchPanel, itemDefault, itemCg } = this.state;
     return (
-      <View style={styles.container}>
+      <View
+        style={[styles.container, { marginTop: Constants.isDevice ? 20 : 30 }]}
+      >
         <SearchPanel
           type="cateDetail"
-          goBack={() => this.props.navigation.goBack(null)}
+          goBack={() => {
+            this.props.navigation.state.params.returnData(itemCg);
+            this.props.navigation.goBack(null);
+          }}
+          onSearchClick={this.handleSearchClick()}
+          closeSearchLayout={() => {
+            this.setState({
+              searchPanel: false
+            });
+          }}
+          bookmarkCategory={isMark => {
+            console.log("cateDetails", isMark);
+          }}
         />
+        {searchPanel && (
+          <View style={{ height: "100%" }}>
+            <SearchLayout type="cate" />
+          </View>
+        )}
         <ScrollView
           style={styles.scrollView}
           showsVerticalScrollIndicator={false}
         >
-          <FilterParentPanel style={{ flex: 0.5 }} />
-          <FilterChildPanel iconClicked={this.handleChoseDetailCategory} />
+          {itemDefault.id === 5000 ? (
+            <View>
+              <FilterParentPanel style={{ flex: 0.5 }} />
+              <FilterChildPanel iconClicked={this.handleChoseDetailCategory} />
+            </View>
+          ) : null}
           {!loading && (
             <FlatList
               style={{ flex: 9.5 }}

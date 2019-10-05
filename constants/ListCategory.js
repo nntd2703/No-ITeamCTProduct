@@ -1,5 +1,13 @@
 export const listFullPanel = [
   {
+    id: 5000,
+    imageName: "do-dien-tu.png",
+    title: "Đồ điện tử",
+    newImageLink:
+      "https://s3-alpha-sig.figma.com/img/55de/ca9d/6109c9a70f7568411e2c50a89510af09?Expires=1571011200&Signature=hktapVc7p4oThaN7rMFp1b0LgU1cZEMGB69ZVp5x3o5pHE3~6UxFQ20SVR0C3j3b6QJV8m9mfw7dm7jTo-VUr3qDmllc9Cp-vY8bJCfPzYT4LUVOWZCcH2o4fOM1qsId1f5o-GSKfKzyWlQUbq3Uy8RWL7al5xeH11YIkS1-r5CkDEKmFuL5NC~0jTOiHR9g8wtdd410QAQHhPLgtlFK~OAfxv3YwoMnYRcNY~RUq350W14euXTpSxGYd6KQ9B3yKa67BMfiTPN9oPgpqsT4UutQHj-03ajnMaVHYNNpokFc8R4Ok1PBh9B-5eD4j~6JNDS3CTvG6Bn6bin2UFmMgw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+    backgroundColor: "#4CD964"
+  },
+  {
     id: 1000,
     imageName: "cho-tot-nha.png",
     title: "Bất Động Sản",
@@ -21,18 +29,11 @@ export const listFullPanel = [
 
 export const listCate = [
   {
-    id: 5000,
-    imageName: "do-dien-tu.png",
-    title: "Đồ điện tử",
-    newImageLink:
-      "https://s3-alpha-sig.figma.com/img/55de/ca9d/6109c9a70f7568411e2c50a89510af09?Expires=1571011200&Signature=hktapVc7p4oThaN7rMFp1b0LgU1cZEMGB69ZVp5x3o5pHE3~6UxFQ20SVR0C3j3b6QJV8m9mfw7dm7jTo-VUr3qDmllc9Cp-vY8bJCfPzYT4LUVOWZCcH2o4fOM1qsId1f5o-GSKfKzyWlQUbq3Uy8RWL7al5xeH11YIkS1-r5CkDEKmFuL5NC~0jTOiHR9g8wtdd410QAQHhPLgtlFK~OAfxv3YwoMnYRcNY~RUq350W14euXTpSxGYd6KQ9B3yKa67BMfiTPN9oPgpqsT4UutQHj-03ajnMaVHYNNpokFc8R4Ok1PBh9B-5eD4j~6JNDS3CTvG6Bn6bin2UFmMgw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
-    backgroundColor: "#4CD964"
-  },
-  {
     id: 13000,
     imageName: "viec-lam.png",
     title: "Việc làm",
-    newImageLink: "https://s3-alpha-sig.figma.com/img/d194/9990/f8ac06d2b6305e2da7f23433fef010f5?Expires=1571011200&Signature=TcIWs6RcVpBtpiZptVFNTWgwKqNtEI2YQ46r9WGLOGWrq72B7nN2setEUuZGfwatVVQ7ktqkE9dM6wocIEYy2CQrom-5dS1pekT60r9HOBWKr9fApsPRXhBwaM7ETAISHFg2AuzV7rUSY8FAFJGu6MdqA9GJvjIe2Da2O3aC6AEyyYC5FH~H1~aItl2zN4JQUnc8LmT8wMJm-DLiAu22putpdxVIl2bd2OT5A9FYH8nphnm8Px1z-vdAWBiPpQU-Sxf2E~ynKJCz5DZgu0Vc-dAhaDxsR8ix-M6pA3AJXg67rgqt2ECKBrVaXAGLSmNSaT9pl8Od-Izdg-Ca5aumSw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+    newImageLink:
+      "https://s3-alpha-sig.figma.com/img/d194/9990/f8ac06d2b6305e2da7f23433fef010f5?Expires=1571011200&Signature=TcIWs6RcVpBtpiZptVFNTWgwKqNtEI2YQ46r9WGLOGWrq72B7nN2setEUuZGfwatVVQ7ktqkE9dM6wocIEYy2CQrom-5dS1pekT60r9HOBWKr9fApsPRXhBwaM7ETAISHFg2AuzV7rUSY8FAFJGu6MdqA9GJvjIe2Da2O3aC6AEyyYC5FH~H1~aItl2zN4JQUnc8LmT8wMJm-DLiAu22putpdxVIl2bd2OT5A9FYH8nphnm8Px1z-vdAWBiPpQU-Sxf2E~ynKJCz5DZgu0Vc-dAhaDxsR8ix-M6pA3AJXg67rgqt2ECKBrVaXAGLSmNSaT9pl8Od-Izdg-Ca5aumSw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
     backgroundColor: "#FCC21B"
   },
   {
@@ -98,7 +99,7 @@ export const listCate = [
     newImageLink:
       "https://s3-alpha-sig.figma.com/img/8a77/7b72/ca2f7832b951d3dd04ad5fcbba7a1a18?Expires=1571011200&Signature=WQWkassfpENJwaWOefSpyYW~tXmmOmw8HZLlh0ecdX42wSooKRoQCeSE9xYeewnoTWs27Bbps58SKtJiZpHVX3Cmy5ZdgTZyuvAnWH4BLpwPjDa9QNe4bCmF9AFSESRiL7ghCbHAo~RLe~-z5KDhwIHdLIcDP5k4EIQG6Sf2SxYTuE-PvDPqnnQAkEG-~QVW-u4DRJzmLoVFwmiN-8l4Z3WqQKychgdAQ2Dd2s3wFhRZDLDfbPmEXHF38kmdGvCHNj6amh9XlRCn~NYhZxFYCD3TBLsPqUB9HeW-wm-9G11Esdlu0eOBxJ--kG7mLKHBL5RIZld9zeTPlWeW7NEPcQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
     backgroundColor: "#57DB41"
-  },
+  }
   // {
   //   id: 13,
   //   imageName: "cho-tang-mien-phi.png",

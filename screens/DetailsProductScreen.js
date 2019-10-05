@@ -11,7 +11,6 @@ import {
   ActivityIndicator
 } from "react-native";
 import Carousel, { ParallaxImage } from "react-native-snap-carousel";
-import Constants from "expo-constants";
 import { MaterialIcons } from "@expo/vector-icons";
 import SuggestProductPanel from "../components/SuggestProductPanel";
 import { getDetailProductUrl, getSimilarProductUrl } from "../utils/FullApi";
@@ -284,7 +283,7 @@ export default class DetailsProductScreen extends Component {
           <SuggestProductPanel
             isCompareIcon={true}
             listSuggestProduct={suggestData}
-            suggestProductClick={(list_id) => () => {
+            suggestProductClick={list_id => () => {
               this.props.navigation.navigate("CompareTool", {
                 value1: itemId,
                 value2: list_id ? list_id : 63642525
@@ -300,11 +299,11 @@ export default class DetailsProductScreen extends Component {
     );
     return (
       <View style={{ flex: 1 }}>
-        <View style={{ flex: 1.25 }}>
+        <View style={{flex : 1}}>
           <HeaderComponent handleGoBack={this.goBackAction} />
         </View>
-        <View style={{ flex: 8 }}>{layoutDetails}</View>
-        <View style={{ flex: 1 }}>
+        <View style={{ flex: 8.25 }}>{layoutDetails}</View>
+        <View style={{ flex: 0.75 }}>
           <Footer />
         </View>
       </View>

@@ -5,4 +5,6 @@ const getDetailProductUrl = "https://gateway.chotot.com/v1/public/ad-listing/";
 
 const getSimilarProductUrl = "https://gateway.chotot.com/v1/public/suggestion/similar-ads?ad_id="
 
-export { getListProductUrl, getDetailProductUrl, getSimilarProductUrl};
+const getSuggestProductUrl = "http://192.168.43.85:3000/users/78/get_recommend_products"
+
+export { getListProductUrl, getDetailProductUrl, getSimilarProductUrl, getSuggestProductUrl};
